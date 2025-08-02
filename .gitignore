@@ -1,0 +1,41 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables
+.env
+
+# FAISS / ChromaDB files
+*.index
+chroma.db/
+chroma_storage/
+
+# VS Code settings
+.vscode/
+
+# MacOS, Windows
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Jupyter Notebook Checkpoints (if any)
+.ipynb_checkpoints/
+
+# Pytest cache
+.pytest_cache/
+
+# MyPy, coverage
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Pip tools
+pip-wheel-metadata/
