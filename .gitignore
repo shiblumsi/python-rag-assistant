@@ -39,3 +39,8 @@ htmlcov/
 
 # Pip tools
 pip-wheel-metadata/
+
+
+
+sample_files
+vector_store
