@@ -1,7 +1,10 @@
 from sentence_transformers import SentenceTransformer
 
+
+# Load pre-trained sentence transformer model
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
+# Get embeddings for a list of text chunks
 def get_embedding(text: str):
     try:
         embedding = model.encode(text)
@@ -10,5 +13,11 @@ def get_embedding(text: str):
         print("Embedding Error:", e)
         return None
 
+# Get embeddings for a list of text chunks
 def get_embeddings_for_chunks(chunks: list[str]):
-    return [get_embedding(chunk) for chunk in chunks if get_embedding(chunk)]
+    embeddings = []
+    for chunk in chunks:
+        emb = get_embedding(chunk)
+        if emb:
+            embeddings.append(emb)
+    return embeddings

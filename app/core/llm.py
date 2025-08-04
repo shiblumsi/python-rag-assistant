@@ -4,16 +4,17 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Uses OpenRouter API for LLM access
 def ask_llm(context: str, question: str) -> str:
     prompt = f"""You are a helpful assistant.
-Answer the question based on the context.
+    Answer the question based on the context.
 
-Context:
-{context}
+    Context:
+    {context}
 
-Question:
-{question}
-"""
+    Question:
+    {question}
+    """
 
     headers = {
         "Authorization": f"Bearer {os.getenv('OPENROUTER_API_KEY')}",

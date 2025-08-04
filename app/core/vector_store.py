@@ -7,6 +7,7 @@ VECTOR_SIZE = 384
 INDEX_FILE = "vector_store/index.faiss"
 META_FILE = "vector_store/index_meta.pkl"
 
+# Global FAISS index and metadata
 faiss_index = None
 faiss_metadata = []
 
@@ -73,3 +74,18 @@ def search_similar_vectors(query_vector, top_k=5):
             })
 
     return results
+
+
+def clear_faiss_index():
+    global faiss_index, faiss_metadata
+
+ 
+    faiss_index = faiss.IndexFlatL2(VECTOR_SIZE)
+    faiss_metadata = []
+
+    if os.path.exists(INDEX_FILE):
+        os.remove(INDEX_FILE)
+    if os.path.exists(META_FILE):
+        os.remove(META_FILE)
+
+    print("FAISS index and metadata cleared")

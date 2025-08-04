@@ -1,15 +1,19 @@
 from fastapi import FastAPI
 from app.api import upload, query
-from app.core.embedding_store import load_vector_store
+
 from contextlib import asynccontextmanager
+from app.core.vector_store import load_faiss_index
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    load_vector_store()
+    #Load FAISS index and metadata during startup
+    load_faiss_index()
     yield
 
-app = FastAPI(title="Smart RAG API", lifespan=lifespan)
+app = FastAPI(title="RAG API", lifespan=lifespan)
 
+# Register API routes
 app.include_router(upload.router, prefix="/upload")
 app.include_router(query.router, prefix="/query")
 
