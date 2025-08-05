@@ -1,15 +1,11 @@
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
 from app.core.embedding import get_embedding
 from app.core.ocr import extract_text_from_base64
 from app.core.vector_store import search_similar_vectors
 from app.core.llm import ask_llm
+from app.models.schemas import QueryRequest
 
 router = APIRouter()
-
-class QueryRequest(BaseModel):
-    question: str
-    image_base64: str = None  
 
 @router.post("/")
 def query_rag(request: QueryRequest):
