@@ -1,7 +1,8 @@
 from fastapi import FastAPI
-from app.api import upload, query
-
+from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
+
+from app.api import upload, query
 from app.core.vector_store import load_faiss_index
 
 
@@ -12,6 +13,18 @@ async def lifespan(app: FastAPI):
     yield
 
 app = FastAPI(title="RAG API", lifespan=lifespan)
+
+
+# CORS Middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://python-rag-ui.streamlit.app"  # Deployed Streamlit UI
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Register API routes
 app.include_router(upload.router, prefix="/upload")
