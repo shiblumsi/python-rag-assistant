@@ -34,7 +34,7 @@ with col2:
         "Upload image (optional)",
         type=["jpg", "jpeg", "png"],
         key="img",
-        help="Limit 200MB per file • JPG, JPEG, PNG",
+        help="Limit 20MB per file • JPG, JPEG, PNG",
         label_visibility="collapsed"
     )
     st.markdown("<div style='margin-bottom:15px;'></div>", unsafe_allow_html=True)
