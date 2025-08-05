@@ -1,19 +1,20 @@
-FROM python:3.10-slim
+# Use official Python image
+FROM python:3.9
 
-# Set working directory inside the container
+# Create and switch to a non-root user
+RUN useradd -m -u 1000 user
+USER user
+ENV PATH="/home/user/.local/bin:$PATH"
+
+# Set working directory
 WORKDIR /app
 
-# Copy dependency file first
-COPY requirements.txt .
+# Copy and install requirements
+COPY --chown=user ./requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy app code
+COPY --chown=user . .
 
-# Copy full project code
-COPY . .
-
-# Expose port used by Hugging Face Spaces (mandatory)
-EXPOSE 7860
-
-# Run FastAPI app located at app/main.py → app.main:app
+# Run FastAPI app
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "7860"]

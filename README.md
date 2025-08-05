@@ -18,7 +18,7 @@ Supports querying text and images using OCR, document chunking, FAISS vector sea
 ## ⚙️ Environment Setup
 
 ### Requirements:
-- Python 3.10+
+- Python 3.9
 - pip
 - virtualenv (recommended)
 
