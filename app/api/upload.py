@@ -12,7 +12,7 @@ router = APIRouter()
 UPLOAD_DIR = "sample_files"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-@router.post("/")
+@router.post("")
 async def upload_file(file: UploadFile = File(...)):
     filename = f"{uuid4()}_{file.filename}"
     file_path = os.path.join(UPLOAD_DIR, filename)
