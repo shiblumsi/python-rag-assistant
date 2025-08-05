@@ -5,6 +5,7 @@ Supports querying text and images using OCR, document chunking, FAISS vector sea
 
 ---
 
+
 ## 🚀 Features
 
 - Upload files (PDF, DOCX, TXT, CSV, JPG, JPEG, PNG)  
@@ -14,7 +15,12 @@ Supports querying text and images using OCR, document chunking, FAISS vector sea
 - Simple Streamlit frontend UI for upload + query  
 
 ---
+## 🌐 Deployed Links
 
+- 🔗 **Backend API:** [https://shiblumsi-python-rag-api.hf.space](https://shiblumsi-python-rag-api.hf.space)
+- 🖥️ **Frontend UI:** [https://python-rag-ui.streamlit.app](https://python-rag-ui.streamlit.app)
+
+---
 ## ⚙️ Environment Setup
 
 ### Requirements:
